@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="grid place-items-center w-screen h-screen">
-      <div className="grid gap-2">
+      <div className="grid gap-2 place-items-center">
         <div className="flex gap-2">
           <label>Name</label>
           <input
