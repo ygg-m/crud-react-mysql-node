@@ -9,7 +9,6 @@ function App() {
   const [wage, setWage] = useState("");
 
   const addEmployee = () => {
-    console.log(name, age, country, position, wage);
     axios
       .post("http://localhost:3001/create", {
         name: name,
@@ -22,7 +21,7 @@ function App() {
   };
 
   return (
-    <div className="grid place-items-center w-screen h-screen">
+    <div className="grid place-items-center w-screen h-screen bg-gray-600 text-gray-300">
       <div className="grid gap-2 place-items-center">
         <div className="flex gap-2">
           <label>Name</label>
@@ -70,7 +69,7 @@ function App() {
         </div>
 
         <button
-          className="bg-blue-500 text-gray-100 hover:bg-blue-600 w-fit p-2 px-6 rounded-lg"
+          className="bg-amber-300 text-amber-900 hover:bg-amber-400 w-fit p-2 px-6 rounded-lg duration-100"
           onClick={addEmployee}
         >
           Add Employee
