@@ -38,7 +38,7 @@ function App() {
     <div className="grid place-items-center w-screen min-h-[100vh] p-8 bg-gray-600 text-gray-300">
       <div className="grid gap-2 place-items-center">
         <div className="flex gap-2">
-          <label>Name</label>
+          <label>Name: </label>
           <input
             type="text"
             className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
@@ -47,7 +47,7 @@ function App() {
         </div>
 
         <div className="flex gap-2">
-          <label>Age</label>
+          <label>Age: </label>
           <input
             type="number"
             className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
