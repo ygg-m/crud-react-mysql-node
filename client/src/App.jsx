@@ -28,7 +28,7 @@ function App() {
       .then((res) => setEmployeeList(res.data));
   };
 
-  const deleteEmployee = (id) => {
+  const deleteEmployee = (id) => { 
     axios
       .delete(`http://localhost:3001/delete/${id}`)
       .then(() => getEmployees());
