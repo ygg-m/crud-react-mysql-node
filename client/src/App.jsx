@@ -28,77 +28,52 @@ function App() {
       .then((res) => setEmployeeList(res.data));
   };
 
-  const deleteEmployee = (id) => { 
+  const deleteEmployee = (id) => {
     axios
       .delete(`http://localhost:3001/delete/${id}`)
       .then(() => getEmployees());
   };
 
+  const InputField = ({ Name, SetState }) => {
+    return (
+      <div className="flex gap-2">
+        <label>{Name}: </label>
+        <input
+          type="text"
+          className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
+          onChange={(e) => SetState(e.target.value)}
+        />
+      </div>
+    );
+  };
+
+  const Button = ({ Text, ClickEffect }) => {
+    return (
+      <button
+        className="bg-amber-300 text-amber-900 hover:bg-amber-400 w-fit p-2 px-6 rounded-lg duration-100"
+        onClick={() => ClickEffect()}
+      >
+        {Text}
+      </button>
+    );
+  };
+
   return (
     <div className="grid place-items-center w-screen min-h-[100vh] p-8 bg-gray-600 text-gray-300">
       <div className="grid gap-2 place-items-center">
-        <div className="flex gap-2">
-          <label>Name: </label>
-          <input
-            type="text"
-            className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
+        <InputField Name="Name" SetState={setName} />
+        <InputField Name="Age" SetState={setAge} />
+        <InputField Name="Country" SetState={setCountry} />
+        <InputField Name="Position" SetState={setPosition} />
+        <InputField Name="Wage (year)" SetState={setWage} />
 
-        <div className="flex gap-2">
-          <label>Age: </label>
-          <input
-            type="number"
-            className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
-
-        <div className="flex gap-2">
-          <label>Country</label>
-          <input
-            type="text"
-            className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
-            onChange={(e) => setCountry(e.target.value)}
-          />
-        </div>
-
-        <div className="flex gap-2">
-          <label>Position</label>
-          <input
-            type="text"
-            className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
-            onChange={(e) => setPosition(e.target.value)}
-          />
-        </div>
-
-        <div className="flex gap-2">
-          <label>Wage (year)</label>
-          <input
-            type="text"
-            className="border border-gray-400 rounded-lg text-gray-600 p-2 px-4"
-            onChange={(e) => setWage(e.target.value)}
-          />
-        </div>
-
-        <button
-          className="bg-amber-300 text-amber-900 hover:bg-amber-400 w-fit p-2 px-6 rounded-lg duration-100"
-          onClick={addEmployee}
-        >
-          Add Employee
-        </button>
+        <Button Text="Add Employee" ClickEffect={addEmployee} />
       </div>
 
       <div className="h-[1px] w-full bg-gray-400" />
 
       <div className="grid gap-4">
-        <button
-          className="bg-amber-300 text-amber-900 hover:bg-amber-400 w-fit p-2 px-6 rounded-lg duration-100"
-          onClick={() => getEmployees()}
-        >
-          Show Employees
-        </button>
+        <Button Text="Show Employees" ClickEffect={getEmployees} />
 
         <div className="flex flex-wrap gap-2">
           {employeeList.map((employee) => {
